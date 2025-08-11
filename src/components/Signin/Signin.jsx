@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { API_BASE_URL, API_ENDPOINTS } from '../../config';
 
 function Signin({ onRouteChange, loadUser }) {
   const [email, setEmail] = useState('');
@@ -23,7 +24,7 @@ function Signin({ onRouteChange, loadUser }) {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/v1/signin', {
+      const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.SIGNIN}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
